@@ -80,7 +80,7 @@ Antes de executar o projeto, verifique se você possui os seguintes itens instal
 
 ### 1. Clone o repositório
 ```bash
-git clone https://github.com/horaciomuller/CadastroDeNinjas.git
+git clone https://github.com/LuisFelipeTS17/CadastroDeNinjas.git
 ```
 
 ### 2. Acesse o diretório do projeto
