@@ -1,5 +1,7 @@
 package dev.java10x.cadastroDeNinjas.Ninjas;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import dev.java10x.cadastroDeNinjas.Missoes.MissoesModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -36,9 +38,6 @@ public class NinjaModel {
     //@ManyToOne = Um ninja tem uma unica missao.
     @ManyToOne
     @JoinColumn(name ="missoes_id") // Foreing Key ou chave estrangeira
-
     private MissoesModel missoes;
-
-
 
 }
