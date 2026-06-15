@@ -9,23 +9,27 @@ import java.util.Optional;
 @Service
 public class NinjaService {
 
-    private NinjasRepository ninjasRepository;
+    private NinjaRepository ninjaRepository;
 
-    public NinjaService(NinjasRepository ninjasRepository) {
-        this.ninjasRepository = ninjasRepository;
+    public NinjaService(NinjaRepository ninjaRepository) {
+        this.ninjaRepository = ninjaRepository;
     }
 
     //Listar todos os meus ninjas
     public List<NinjaModel> listarNinja () {
-        return ninjasRepository.findAll();
+        return ninjaRepository.findAll();
     }
 
     //Listar todos os meus ninjas por ID
 
     public NinjaModel listarNinjasPorId(Long id) {
-        Optional<NinjaModel> ninjaPorId = ninjasRepository.findById(id);
+        Optional<NinjaModel> ninjaPorId = ninjaRepository.findById(id);
         return ninjaPorId.orElse(null);
+    }
 
+    //Criar um novo ninja
+    public NinjaModel criarNinja(NinjaModel ninja) {
+        return ninjaRepository.save(ninja);
     }
 
 }
