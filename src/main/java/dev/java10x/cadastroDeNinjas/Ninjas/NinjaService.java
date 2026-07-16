@@ -27,7 +27,12 @@ public class NinjaService {
     }
 
     //Criar um novo ninja
-    public NinjaModel criarNinja(NinjaModel ninja) {
+    public NinjaModel criarNinja(NinjaDTO dto) {
+        NinjaModel ninja = new NinjaModel();
+        ninja.setNome(dto.getNome());
+        ninja.setEmail(dto.getEmail());
+        ninja.setImgUrl(dto.getImgUrl());
+        ninja.setIdade(dto.getIdade());
         return ninjaRepository.save(ninja);
     }
 
@@ -37,10 +42,15 @@ public class NinjaService {
     }
 
     //Atualizar ninja
-    public NinjaModel atualizarNinja(Long id, NinjaModel ninjaAtualizado) {
+    public NinjaModel atualizarNinja(Long id, NinjaDTO dto) {
         if (ninjaRepository.existsById(id)) {
-            ninjaAtualizado.setId(id);
-            return ninjaRepository.save(ninjaAtualizado);
+            NinjaModel ninja = new NinjaModel();
+            ninja.setId(id);
+            ninja.setNome(dto.getNome());
+            ninja.setEmail(dto.getEmail());
+            ninja.setImgUrl(dto.getImgUrl());
+            ninja.setIdade(dto.getIdade());
+            return ninjaRepository.save(ninja);
         }
         return null;
     }
