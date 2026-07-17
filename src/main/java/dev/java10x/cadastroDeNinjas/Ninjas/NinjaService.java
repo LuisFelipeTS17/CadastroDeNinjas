@@ -2,7 +2,6 @@ package dev.java10x.cadastroDeNinjas.Ninjas;
 
 import org.springframework.stereotype.Service;
 
-
 import java.util.List;
 import java.util.Optional;
 
