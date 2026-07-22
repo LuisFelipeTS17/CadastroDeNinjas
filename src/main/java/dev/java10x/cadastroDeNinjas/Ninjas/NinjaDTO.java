@@ -1,4 +1,4 @@
 package dev.java10x.cadastroDeNinjas.Ninjas;
 
-public class NinjasDTO {
+public class NinjaDTO {
 }
