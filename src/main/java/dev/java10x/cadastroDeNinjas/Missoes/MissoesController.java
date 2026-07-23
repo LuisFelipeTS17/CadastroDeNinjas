@@ -29,13 +29,14 @@ public class MissoesController {
 
     //Post -> Mandar uma requisição para criar as missoes
     @PostMapping("/criar")
-    public MissoesModel criarMissao(@RequestBody MissoesModel missoes) { return missoesService.criarMissao(missoes);
+    public MissoesDTO criarMissao(@RequestBody MissoesDTO missoes) {
+        return missoesService.criarMissao(missoes);
     }
 
     //Put -> Mandar uma requisição para alterar as missões
-    @PutMapping("/alterarID")
-    public String alterarMissao() {
-        return "Missao alterada com sucesso";
+    @PutMapping("/alterar/{id}")
+    public MissoesModel alterarMissao(@PathVariable Long id, @RequestBody MissoesModel missaoAlterada) {
+        return missoesService.atualizarMissao(id,missaoAlterada);
     }
 
     //Delete -> Mandar uma requisição para deletar as missões

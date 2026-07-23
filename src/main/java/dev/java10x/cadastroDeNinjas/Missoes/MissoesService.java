@@ -1,5 +1,8 @@
 package dev.java10x.cadastroDeNinjas.Missoes;
 
+import dev.java10x.cadastroDeNinjas.Ninjas.NinjaMapper;
+import dev.java10x.cadastroDeNinjas.Ninjas.NinjaModel;
+import dev.java10x.cadastroDeNinjas.Ninjas.NinjaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -7,10 +10,13 @@ import java.util.Optional;
 
 @Service
 public class MissoesService {
+    private MissoesMapper missoesMapper;
     private MissoesRepository missoesRepository;
 
-    public MissoesService(MissoesRepository missoesRepository) {
+    public MissoesService(MissoesMapper missoesMapper, MissoesRepository missoesRepository) {
+        this.missoesMapper = missoesMapper;
         this.missoesRepository = missoesRepository;
+
     }
 
     //Listar todas as missoes
@@ -25,13 +31,26 @@ public class MissoesService {
     }
 
     //Criar uma nova missao
-    public MissoesModel criarMissao(MissoesModel missao) {
-        return missoesRepository.save(missao);
+    public MissoesDTO criarMissao(MissoesDTO missaoDTO) {
+        MissoesModel missoes= missoesMapper.map(missaoDTO);
+       missoes = missoesRepository.save(missoes);
+       return missoesMapper.map(missoes);
+
     }
 
     //Deletar missao - tem que ser void
     public void deletarMissaoPorId(Long id) {
         missoesRepository.deleteById(id);
+    }
+
+    //Atualizar missão
+    public MissoesModel atualizarMissao(Long id, MissoesModel missoesAtualizado){
+        if ((missoesRepository.existsById(id) )){
+            missoesAtualizado.setId(id);
+            return missoesRepository.save(missoesAtualizado);
+        }
+
+        return null;
     }
 
 }
