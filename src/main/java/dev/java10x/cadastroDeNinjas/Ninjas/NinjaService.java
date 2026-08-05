@@ -29,7 +29,6 @@ public class NinjaService {
       return ninjaPorId.map(ninjaMapper::map).orElse(null);
     }
 
-    //Criar um novo ninja
     public NinjaDTO criarNinja(NinjaDTO ninjaDTO) {
         NinjaModel ninja = ninjaMapper.map(ninjaDTO) ;
         ninja = ninjaRepository.save(ninja);
@@ -37,12 +36,10 @@ public class NinjaService {
 
     }
 
-    //Deletar o ninja - tem q ser um metodo void
     public void deletarNinjaPorId(Long id){
        ninjaRepository.deleteById(id);
     }
 
-    //Atualizar ninja
     public NinjaDTO atualizarNinja(Long id, NinjaDTO ninjaDTO) {
         Optional<NinjaModel> ninjaExistente = ninjaRepository.findById(id);
         if (ninjaExistente.isPresent()) {

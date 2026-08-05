@@ -10,8 +10,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-//Entity -> Ele transforma uma classe em uma entidade do DB
-// JPA = JAVA PERSISTENCE API
+
 @Entity
 @Table(name = "tb_cadastro")
 @NoArgsConstructor

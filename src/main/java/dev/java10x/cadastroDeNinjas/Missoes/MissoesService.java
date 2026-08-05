@@ -19,18 +19,15 @@ public class MissoesService {
 
     }
 
-    //Listar todas as missoes
     public List<MissoesModel> listarMissoes() {
         return missoesRepository.findAll();
     }
 
-    //Listar tadas missoes por ID
     public MissoesModel listarMissaoPorId(Long id) {
         Optional<MissoesModel> missaoPorId = missoesRepository.findById(id);
         return missaoPorId.orElse(null);
     }
 
-    //Criar uma nova missao
     public MissoesDTO criarMissao(MissoesDTO missaoDTO) {
         MissoesModel missoes= missoesMapper.map(missaoDTO);
        missoes = missoesRepository.save(missoes);
@@ -38,12 +35,10 @@ public class MissoesService {
 
     }
 
-    //Deletar missao - tem que ser void
     public void deletarMissaoPorId(Long id) {
         missoesRepository.deleteById(id);
     }
 
-    //Atualizar missão
     public MissoesModel atualizarMissao(Long id, MissoesModel missoesAtualizado){
         if ((missoesRepository.existsById(id) )){
             missoesAtualizado.setId(id);
