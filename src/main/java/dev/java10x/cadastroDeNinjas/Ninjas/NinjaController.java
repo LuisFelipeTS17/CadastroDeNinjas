@@ -1,5 +1,6 @@
 package dev.java10x.cadastroDeNinjas.Ninjas;
 
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,7 @@ public class NinjaController {
     }
 
     @GetMapping("/boasvindas")
+    @Operation
     public String boasVindas() {
         return "Essa é a minha primeira mensagem nessa roda! Boas-Vindas!";
     }
